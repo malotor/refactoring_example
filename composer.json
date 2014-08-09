@@ -1,0 +1,12 @@
+{
+    "name": "malotor/videoclub",
+    "description": "A example of a service container",
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "malotor\\videoclub\\": "src"
+        }
+    }
+}
