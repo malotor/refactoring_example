@@ -19,15 +19,6 @@ class Customer {
 		return $this->name; 
 	}
 
-	//Delegate method
-	protected function amountFor($rental) {
-		return $rental->getCharge();
-	}
-	//Delegate method
-	protected function frequentRenderPoint($rental) {
-		return $rental->getFrequentRenterPoints();
-	}
-
 	public function statement() { 
 		$totalAmount = 0;
 		$frequentRenterPoints = 0;
