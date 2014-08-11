@@ -19,8 +19,16 @@ class Customer {
 		return $this->name; 
 	}
 
-	public function statement() { 
+	private function getTotalCharge() {
 		$totalAmount = 0;
+		foreach ($this->rentals as $each ) {
+			$totalAmount += $each->getCharge();
+		}
+		return $totalAmount;
+	}
+
+	public function statement() { 
+		
 		$frequentRenterPoints = 0;
 		//Enumeration rentals = _rentals.elements();
 		
@@ -34,10 +42,9 @@ class Customer {
 			//show figures
 			$result .= "\t" . $each->getMovie()->getTitle() . ":\t" .  $each->getCharge() . "\n";
 
-			$totalAmount += $each->getCharge();
 		}
 		//add footer lines 
-		$result .= "Amount owed is " . $totalAmount . "\n";
+		$result .= "Amount owed is " . $this->getTotalCharge() . "\n";
 		$result .= "You earned " . $frequentRenterPoints . " frequent renter points";
 		
 		return $result; 
