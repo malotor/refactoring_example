@@ -2,7 +2,6 @@
 
 namespace malotor\videoclub;
 
-
 class Movie {
 
 	const CHILDRENS = 2; 
@@ -10,7 +9,7 @@ class Movie {
 	const NEW_RELEASE = 1;
 
 	private $title; 
-	private $priceCode;
+	private $price;
 
 	public function __construct($title, $priceCode) { 
 		$this->title = $title;
@@ -18,11 +17,23 @@ class Movie {
 	}
 
 	public function getPriceCode() { 
-		return $this->priceCode;
+		return $this->price->getPriceCode();
 	}
 
 	public function setPriceCode($arg) { 
-		$this->priceCode = $arg;
+		switch ($arg) {
+			case Movie::REGULAR: 
+				$this->price = new RegularPrice(); 
+			break;
+			case Movie::NEW_RELEASE:
+				$this->price = new NewReleasePrice(); 
+			break;
+			case Movie::CHILDRENS:
+				$this->price = new ChildrensPrice(); 
+			break;
+			default:
+				throw new Exception("Incorrect Price Code");
+		}
 	}
 
 	public function getTitle() { 
@@ -47,6 +58,7 @@ class Movie {
 				if ($daysRented > 3)
 					$result += ($daysRented - 3) * 1.5; 
 			break;
+
 		}
 		return $result;
 	}

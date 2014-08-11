@@ -4,6 +4,7 @@
 use malotor\videoclub\Movie;
 use malotor\videoclub\Rental;
 use malotor\videoclub\Customer;
+use malotor\videoclub\Price;
 
 class RefactoringTestCase extends PHPUnit_Framework_TestCase {
 	
