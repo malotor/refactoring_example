@@ -24,16 +24,10 @@ class Customer {
 		return $rental->getCharge();
 	}
 	//Delegate method
-	protected function frequentRenderPoint($each) {
-		// add frequent renter points
-			$frequentRenterPoints=1;
-			// add bonus for a two day new release rental
-			if (($each->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $each->getDaysRented() > 1) 
-				$frequentRenterPoints = 2;
-
-			return $frequentRenterPoints;
-
+	protected function frequentRenderPoint($rental) {
+		return $rental->getFrequentRenterPoints();
 	}
+
 	public function statement() { 
 		$totalAmount = 0;
 		$frequentRenterPoints = 0;
@@ -44,7 +38,7 @@ class Customer {
 		foreach ($this->rentals as $each ) {
 
 			// add frequent renter points
-			$frequentRenterPoints += $this->frequentRenderPoint($each);
+			$frequentRenterPoints += $each->getFrequentRenterPoints();
 
 			//show figures
 			$result .= "\t" . $each->getMovie()->getTitle() . ":\t" .  $each->getCharge() . "\n";
