@@ -33,17 +33,15 @@ class Customer {
 
 		foreach ($this->rentals as $each ) {
 
-			$thisAmount = $each->getCharge();
-			
 			// add frequent renter points
 			$frequentRenterPoints++;
 			// add bonus for a two day new release rental
 			if (($each->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $each->getDaysRented() > 1) 
 				$frequentRenterPoints ++;
 			//show figures
-			$result .= "\t" . $each->getMovie()->getTitle() . ":\t" . $thisAmount . "\n";
+			$result .= "\t" . $each->getMovie()->getTitle() . ":\t" .  $each->getCharge() . "\n";
 
-			$totalAmount += $thisAmount;
+			$totalAmount += $each->getCharge();
 		}
 		//add footer lines 
 		$result .= "Amount owed is " . $totalAmount . "\n";
