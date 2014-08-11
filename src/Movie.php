@@ -51,4 +51,17 @@ class Movie {
 		return $result;
 	}
 
+	//Delegate method
+	public function getFrequentRenterPoints($daysRented)) {
+		// add frequent renter points
+		$result = 1;
+		// add bonus for a two day new release rental
+		if (($this->getPriceCode() == Movie::NEW_RELEASE) && $daysRented) > 1) 
+			$result = 2;
+
+		return $result;
+
+	}
+
+
 }
