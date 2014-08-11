@@ -19,7 +19,7 @@ class Customer {
 		return $this->name; 
 	}
 
-	//Move method
+	//Delegate method
 	protected function amountFor($rental) {
 		return $rental->getCharge();
 	}
@@ -33,7 +33,7 @@ class Customer {
 
 		foreach ($this->rentals as $each ) {
 
-			$thisAmount = $this->amountFor($each);
+			$thisAmount = $each->getCharge();
 			
 			// add frequent renter points
 			$frequentRenterPoints++;
