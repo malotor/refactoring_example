@@ -51,4 +51,21 @@ class Customer {
 		
 		return $result; 
 	}
+
+	public function htmlStatement() { 
+		
+		$result = "<h1>Rental Record for <em>" . $this->getName() . "</em></h1>\n"; 
+
+
+		foreach ($this->rentals as $each ) {
+			//show figures
+			$result .= $each->getMovie()->getTitle() . ": " .  $each->getCharge() . "<br>\n";
+
+		}
+		//add footer lines 
+		$result .= "<p>Amount owed is <em>" . $this->getTotalCharge() . "</em></p>\n";
+		$result .= "<p>You earned <em>" . $this->getTotalFrequentRenterPoints() . "</em> frequent renter points</p>";
+		
+		return $result; 
+	}
 }

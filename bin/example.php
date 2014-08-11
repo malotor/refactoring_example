@@ -22,3 +22,4 @@ $customer->addRental($rental2);
 $customer->addRental($rental3);
 
 echo $customer->statement();
+echo $customer->htmlStatement();

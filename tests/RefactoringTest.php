@@ -89,4 +89,19 @@ class RefactoringTestCase extends PHPUnit_Framework_TestCase {
 
 	}
 
+	function testHtmlStatement() {
+		$movie = new Movie('The lord of the rings', 1);
+		$rental = new Rental($movie, 10);
+
+		$movie2 = new Movie('Toy Story', 2);
+		$rental2 = new Rental($movie2, 10);
+
+		$this->customer->addRental($rental);
+		$this->customer->addRental($rental2);
+
+		$output = "<h1>Rental Record for <em>John Doe</em></h1>\nBenHur: 14<br>\nThe lord of the rings: 30<br>\nToy Story: 12<br>\n<p>Amount owed is <em>56</em></p>\n<p>You earned <em>4</em> frequent renter points</p>";
+
+		$this->assertEquals($output, $this->customer->htmlStatement());
+	}
+
 }
