@@ -8,6 +8,8 @@ abstract class Price {
 
 	abstract public function getCharge($daysRented);
 
-	abstract public function getFrequentRenterPoints($daysRented);	
+	public function getFrequentRenterPoints($daysRented) {
+		return 1;
+	}	
 }
 

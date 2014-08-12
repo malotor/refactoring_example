@@ -14,13 +14,7 @@ class NewReleasePrice extends Price {
 	}
 
 	public function getFrequentRenterPoints($daysRented) {
-		// add frequent renter points
-		$result = 1;
-		// add bonus for a two day new release rental
-		if ($daysRented > 1) 
-			$result = 2;
-
-		return $result;
+		return $daysRented > 1 ? 2 : 1 ;
 	}
 
 }
