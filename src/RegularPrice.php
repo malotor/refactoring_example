@@ -13,4 +13,11 @@ class RegularPrice extends Price {
 		
 		return $result;
 	}
+	public function getFrequentRenterPoints($daysRented) {
+		// add frequent renter points
+		$result = 1;
+
+		return $result;
+	}
+
 }
