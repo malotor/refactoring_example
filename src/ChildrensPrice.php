@@ -7,12 +7,7 @@ class ChildrensPrice extends Price {
 		return Movie::CHILDRENS;
 	} 
 	public function getCharge($daysRented) {
-
-		$result = 1.5;
-		if ($daysRented > 3)
-			$result += ($daysRented - 3) * 1.5; 
-			
-		return $result;
+		return $daysRented > 3 ? 1.5 + ($daysRented - 3) * 1.5 : 1.5;
 	}
 
 }

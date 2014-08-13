@@ -56,7 +56,6 @@ class Customer {
 		
 		$result = "<h1>Rental Record for <em>" . $this->getName() . "</em></h1>\n"; 
 
-
 		foreach ($this->rentals as $each ) {
 			//show figures
 			$result .= $each->getMovie()->getTitle() . ": " .  $each->getCharge() . "<br>\n";
